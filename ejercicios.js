@@ -417,7 +417,7 @@ function imprimirMatriz(matriz) {
 //27. Traducir números a palabras
 
 function numerosAPalabras(array) {
-    const palabras = [ "cero", "uno", "dos", "tres", "cuatro", "cinco","seis", "siete","ocho","nueve"]
+    const palabras = ["cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"]
     return array.map(element => palabras[element])
     // console.log(palabras[9])
 
@@ -441,8 +441,8 @@ function numerosAPalabras(array) {
 
 // 28. Traducir palabras a números
 
-function palabrasANumeros(array){
-    const palabras = [ "cero", "uno", "dos", "tres", "cuatro", "cinco","seis", "siete","ocho","nueve"]
+function palabrasANumeros(array) {
+    const palabras = ["cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"]
     return array.map(palabra => {
         return palabras.findIndex(valor => valor === palabra)
     })
@@ -453,10 +453,47 @@ function palabrasANumeros(array){
 
 //29. Número de asteriscos en un arreglo
 
-function numAsteriscos(){
+function numAsteriscos(array) {
+    const filtro = array.filter(valor => valor === "*")
+    return filtro.length
+}
+
+// console.log(numAsteriscos(['', '*', '', '*'])) // 2
+// console.log(numAsteriscos(['*', '*', '*'])) // 3
+// console.log(numAsteriscos([])) // 0
+
+//30. Número de asteriscos en una matriz
+
+function numAsteriscosM(array) {
+    let newArray = [];
+    for (let element of array) {
+        newArray = newArray.concat(element);
+    }
+    return newArray.filter(valor => valor === "*").length
 
 }
 
-console.log(numAsteriscos(['', '*', '', '*'])) // 2
-console.log(numAsteriscos(['*', '*', '*'])) // 3
-console.log(numAsteriscos([])) // 0
+
+// console.log(numAsteriscosM([
+//     ['*', '', '*'],
+//     ['', '*', ''],
+//     ['*', '', '*']
+//   ]))
+
+//31. Distancia entre dos strings
+
+function distancia(p1, p2) {
+    let suma = 0
+    for (let index = 0; index < p2.length; index++) {
+        const letraP1 = p1.charAt(index)
+        const letraP2 = p2.charAt(index)
+        if(letraP1 != letraP2){
+            suma++
+        }
+    }
+    return suma
+}
+
+console.log(distancia("hola", "hola")) // 0
+console.log(distancia("sol", "tor")) // 1
+console.log(distancia("carro", "correr")) // 3
